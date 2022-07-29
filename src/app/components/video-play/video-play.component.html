@@ -1,0 +1,34 @@
+<div class="videos-detls">
+    <div *ngIf="isLoader" class="loader">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="videos__container details-con" *ngIf="videos[0]">
+        <div class="playvideo">
+            <div class="yVid">
+                <div [innerHTML]="videos[0].videoUrl"></div>
+            </div>
+
+            <div class="video__details videotitlesec">
+                <div class="title">
+                    <h3>
+                        {{videos[0].title}} </h3>
+                    <p> <i class="fa fa-clock-o clock1" aria-hidden="true"></i> <span>{{ videos[0].publishedAt | date:'mediumDate' }}</span>
+
+                        <button title="Favourite" class="favouri" (click)="isFavoritee(videos[0].videoId)">
+                            <i class='{{defaultColor ? "fa fa-heart-o":"fa fa-heart"}}'></i>
+                        </button>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="top-sec">
+            <app-videoside></app-videoside>
+        </div>
+
+
+
+
+
+    </div>
+</div>

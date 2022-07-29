@@ -1,0 +1,43 @@
+<div class="mainBody">
+    <app-adminheader></app-adminheader>
+    <div class="videos">
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Title Name </h3>
+                </th>
+                <td mat-cell *matCellDef="let element"> <b>{{element.title}}</b> </td>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="video">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Video</h3>
+                </th>
+                <td mat-cell *matCellDef="let element">
+
+                    <div class=" videoimgtag">
+                        <a href="https://www.youtube.com/watch?v={{element.videoId}}" target="_blank"> <img [src]="element.thumbnail" alt="" /></a>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="channel">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Channel Name</h3>
+                </th>
+                <td mat-cell *matCellDef="let element"> <b><a href="{{element.channelUrl}}" target="_blank">View
+                            Channel</a></b> </td>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Action</h3>
+                </th>
+                <td mat-cell *matCellDef="let element"> <button class="btncolor" title="Delete" (click)="deleteVideo(element.videoId)"><i class="material-icons">delete</i></button> </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]"></mat-paginator>
+    </div>
+</div>

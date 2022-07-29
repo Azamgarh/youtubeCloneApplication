@@ -1,0 +1,15 @@
+<div *ngFor="let video of videos">
+    <div class="video-sidebar">
+        <div class="video__thumbnail_sidebar">
+            <img [src]="video.thumbnail" alt="" />
+        </div>
+        <div class="video__details">
+            <div class="title">
+                <h3>
+                    <a routerLink="/video-play/{{video.videoId}}"> {{video.title?.slice(0,50) }}</a> </h3>
+                <a [href]="video.channelUrl" target="_blank">{{ video.channelTitle }}</a>
+                <span>{{ video.publishedAt | date:'mediumDate' }}</span>
+            </div>
+        </div>
+    </div>
+</div>

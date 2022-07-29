@@ -1,0 +1,29 @@
+<div class="mainBody">
+    <!-- Sidebar Starts -->
+    <div *ngIf="isLoader" class="loader">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <app-sidebar></app-sidebar>
+    <!-- Sidebar Ends -->
+    <!-- Videos Section -->
+    <div class="videos">
+        <h1>Recommended</h1>
+        <div class="videos__container">
+            <div *ngFor="let video of videos">
+                <div class="video">
+                    <div class="video__thumbnail">
+                        <a routerLink="video-play/{{video.videoId}}"><img [src]="video.thumbnail" alt="" /></a>
+                    </div>
+                    <div class="video__details">
+                        <div class="title">
+                            <h3><a routerLink="video-play/{{video.videoId}}"> {{video.title?.slice(0,50) }}</a></h3>
+                            <a [href]="video.channelUrl" target="_blank">{{ video.channelTitle }}</a>
+                            <span>{{ video.publishedAt | date:'mediumDate' }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Video Ends -->
+            </div>
+        </div>
+    </div>
+</div>
